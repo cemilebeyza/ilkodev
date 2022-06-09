@@ -1,52 +1,52 @@
 class Wizard:
-    def _init_(self, name, color, house):
+    def __init__(self, name, color, values):
         self.name = name
         self.color = color
-        self.house = house
+        self.house = self.nameOfHouse()
+        self.values = values  # ["Bravery", "helping others", "chivalry"]
+
+    @classmethod
+    def nameOfHouse(cls):
+        if cls is Gryffindor:
+            return "Gryffindor"
+        elif cls is Hufflepuff:
+            return "Hufflepuff"
+        elif cls is Ravenclaw:
+            return "Ravenclaw"
+        else:
+            return "Slytherin"
+
+    def getValues(self):
+        return self.values
 
 
 class Gryffindor(Wizard):
-    def _init_(self, name):
-        Wizard._init_(self, name, "red")
-
-    def nameOfHouse(self):
-        return "Gryffindor"
-
-    def getValues(self):
-        return ["Bravery", "helping others", "chivalry"]
+    def __init__(self, name):
+        Wizard.__init__(self, name, "red", ["Bravery", "helping others", "chivalry"])
 
 
 class Hufflepuff(Wizard):
-    def _init_(self, name):
-        Wizard._init_(self, name, "yellow")
-
-    def nameOfHouse(self):
-        return "Hufflepuff"
-
-    def getValues(self):
-        return ["Hard work", "patience", "loyalty", "fair play"]
+    def __init__(self, name):
+        Wizard.__init__(
+            self, name, "yellow", ["Hard work", "patience", "loyalty", "fair play"]
+        )
 
 
 class Ravenclaw(Wizard):
-    def _init_(self, name):
-        Wizard._init_(self, name, "blue")
-
-    def nameOfHouse(self):
-        return "Ravenclaw"
-
-    def getValues(self):
-        return ["Intelligence", "knowledge", "planning ahead", "wit"]
+    def __init__(self, name):
+        Wizard.__init__(
+            self, name, "blue", ["Intelligence", "knowledge", "planning ahead", "wit"]
+        )
 
 
 class Slytherin(Wizard):
-    def _init_(self, name):
-        Wizard._init_(self, name, "green")
-
-    def nameOfHouse(self):
-        return "Slytherin"
-
-    def getValues(self):
-        return ["Ambition", "cunningness", "heritage", "resourcefulness"]
+    def __init__(self, name):
+        Wizard.__init__(
+            self,
+            name,
+            "green",
+            ["Ambition", "cunningness", "heritage", "resourcefulness"],
+        )
 
 
 while True:
